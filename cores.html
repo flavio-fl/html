@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Cores RGB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .slider-container {
+            margin: 10px;
+        }
+        input[type="range"] {
+            width: 300px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .label {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Controle de Cores RGB</h1>
+
+        <!-- Sliders para controlar as cores -->
+        <div class="slider-container">
+            <input type="range" id="sliderR" min="0" max="255" value="0" oninput="updateColor()">
+            <div class="label">Vermelho: <span id="valueR">0</span></div>
+        </div>
+
+        <div class="slider-container">
+            <input type="range" id="sliderG" min="0" max="255" value="0" oninput="updateColor()">
+            <div class="label">Verde: <span id="valueG">0</span></div>
+        </div>
+
+        <div class="slider-container">
+            <input type="range" id="sliderB" min="0" max="255" value="0" oninput="updateColor()">
+            <div class="label">Azul: <span id="valueB">0</span></div>
+        </div>
+    </div>
+
+    <script>
+        function updateColor() {
+            // Obtém os valores dos sliders
+            const r = document.getElementById('sliderR').value;
+            const g = document.getElementById('sliderG').value;
+            const b = document.getElementById('sliderB').value;
+
+            // Atualiza os valores exibidos
+            document.getElementById('valueR').textContent = r;
+            document.getElementById('valueG').textContent = g;
+            document.getElementById('valueB').textContent = b;
+
+            // Atualiza a cor de fundo da página
+            document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        }
+
+        // Inicializa a cor com os valores dos sliders
+        updateColor();
+    </script>
+
+</body>
+</html>
